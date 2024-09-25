@@ -12,7 +12,6 @@ repository = "https://github.com/YourUsername/health_haven_medical_centre"  # Up
 homepage = "https://yourwebsite.com"  # Update with your homepage URL
 documentation = "https://docs.yourwebsite.com"  # Update with your documentation URL
 readme = "README.md"
-edition = "2021"
 
 [dependencies]
 actix-web = "4.0"   # Web framework for building web applications
