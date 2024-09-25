@@ -8,41 +8,37 @@ license = "MIT"
 rust-version = "1.60.0"
 categories = ["web-programming", "health", "actix"]
 keywords = ["actix", "web", "medical", "healthcare"]
-repository = "https://github.com/FaroukPandor/health_haven_medical_centre"  # Your GitHub repository URL
-homepage = "https://healthhaven.github.io"  # Final homepage URL
-documentation = "https://healthhaven.github.io/docs"  # Suggested documentation URL
+repository = "https://github.com/FaroukPandor/health_haven_medical_centre"
+homepage = "https://healthhaven.github.io"
+documentation = "https://healthhaven.github.io/docs"
 readme = "README.md"
 
 [dependencies]
-actix-web = "4.0"  # Web framework for building web applications
-serde = { version = "1.0", features = ["derive"] }  # For serialization
-serde_json = "1.0"  # For JSON handling
+actix-web = "4.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
 sqlx = { version = "0.5.13", features = ["runtime-tokio-rustls", "postgres", "sqlite", "mysql"] }
-syn = { version = "1.0", features = ["full"] }  # Use "full" to enable all features
-dotenv = "0.15"  # For loading environment variables from a .env file
-log = "0.4"  # For logging support
-tokio = { version = "1.0", features = ["full"] }  # Async runtime
-
-# Additional dependencies for security, performance, and utility
-openssl = { version = "0.10", features = ["vendored"] }  # For OpenSSL support
-bcrypt = "0.11"  # For password hashing
-chrono = "0.4"  # For date and time handling
-uuid = { version = "1.0", features = ["v4"] }  # For generating UUIDs
-validator = "0.14"  # For input validation
-actix-cors = "0.6"  # For enabling Cross-Origin Resource Sharing
-argon2 = "0.3"  # For password hashing using Argon2
-thiserror = "1.0"  # For error handling
-actix-files = "0.6"  # For serving static files
-jsonwebtoken = "8.1"  # For JWT handling
-
-# Optional: for handling file uploads
-actix-multipart = "0.4"
+syn = { version = "1.0", features = ["full"] }
+dotenv = "0.15"
+log = "0.4"
+tokio = { version = "1.0", features = ["full"] }
+openssl = { version = "0.10", features = ["vendored"] }
+bcrypt = "0.11"
+chrono = "0.4"
+uuid = { version = "1.0", features = ["v4"] }
+validator = "0.14"
+actix-cors = "0.6"
+argon2 = "0.3"
+thiserror = "1.0"
+actix-files = "0.6"
+jsonwebtoken = "8.1"
+actix-multipart = "0.4"  # Optional: for handling file uploads
 
 # Testing dependencies
 [dev-dependencies]
-actix-rt = "2.5"  # Actix runtime for async testing
-tokio-test = "0.4"  # Testing utilities for Tokio
-reqwest = { version = "0.11", features = ["json"] }  # HTTP client for making requests in tests
+actix-rt = "2.5"
+tokio-test = "0.4"
+reqwest = { version = "0.11", features = ["json"] }
 
 [features]
 default = ["postgres"]
@@ -51,10 +47,12 @@ mysql = ["sqlx/mysql"]
 postgres = ["sqlx/postgres"]
 
 [profile.release]
-opt-level = "z"  # Optimize for size
+opt-level = "z"
 
 [workspace]
-# members = ["health_haven_backend", "health_haven_frontend"]  # Uncomment if your project has a workspace with multiple members
+# Uncomment the following line if your project has a workspace with multiple members
+# members = ["health_haven_backend", "health_haven_frontend"]
 
 # Optional: for Cargo.lock management in multi-package repositories
-[workspace.dependencies]
+# Uncomment the following line if you need to manage workspace dependencies
+# [workspace.dependencies]
