@@ -24,4 +24,4 @@ tokio = { version = "1.0", features = ["full"] }  # If you need async features
 # Testing dependencies (uncomment if needed)
 actix-rt = "2.5"  # Actix runtime for async testing
 tokio-test = "0.4"  # Testing utilities for Tokio
-CARreqwest = { version = "0.11", features = ["json"] }  # HTTP client for making requests in tests
+reqwest = { version = "0.11", features = ["json"] }  # HTTP client for making requests in tests
