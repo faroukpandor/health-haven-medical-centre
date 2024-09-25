@@ -3,18 +3,18 @@ name = "health_haven_medical_centre"
 version = "0.1.0"
 edition = "2021"
 description = "A medical centre application built using Actix-web, providing health services and information."
-authors = ["Your Name <faroukpandor@gmail.com>"]
+authors = ["Farouk Pandor <faroukpandor@gmail.com>"]
 license = "MIT"
 rust-version = "1.60.0"
 categories = ["web-programming", "health", "actix"]
 keywords = ["actix", "web", "medical", "healthcare"]
-repository = "https://github.com/YourUsername/health_haven_medical_centre"  # Update with your repository URL
-homepage = "https://yourwebsite.com"  # Update with your homepage URL
-documentation = "https://docs.yourwebsite.com"  # Update with your documentation URL
+repository = "https://github.com/FaroukPandor/health_haven_medical_centre"  # Your GitHub repository URL
+homepage = "https://healthhaven.github.io"  # Final homepage URL
+documentation = "https://healthhaven.github.io/docs"  # Suggested documentation URL
 readme = "README.md"
 
 [dependencies]
-actix-web = "4.0"   # Web framework for building web applications
+actix-web = "4.0"  # Web framework for building web applications
 serde = { version = "1.0", features = ["derive"] }  # For serialization
 serde_json = "1.0"  # For JSON handling
 sqlx = { version = "0.5", features = ["macros", "runtime-actix-native-tls"] }  # Enable Actix runtime with native TLS
@@ -53,7 +53,7 @@ postgres = ["sqlx/postgres"]
 opt-level = "z"  # Optimize for size
 
 [workspace]
-# members = ["health_haven_backend", "health_haven_frontend"]  # Add if your project has a workspace with multiple members
+# members = ["health_haven_backend", "health_haven_frontend"]  # Uncomment if your project has a workspace with multiple members
 
 # Optional: for Cargo.lock management in multi-package repositories
 [workspace.dependencies]
