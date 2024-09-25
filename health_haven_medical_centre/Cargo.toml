@@ -53,7 +53,7 @@ postgres = ["sqlx/postgres"]
 opt-level = "z"  # Optimize for size
 
 [workspace]
-members = ["health_haven_backend", "health_haven_frontend"]  # Add if your project has a workspace with multiple members
+# members = ["health_haven_backend", "health_haven_frontend"]  # Add if your project has a workspace with multiple members
 
 # Optional: for Cargo.lock management in multi-package repositories
 [workspace.dependencies]
