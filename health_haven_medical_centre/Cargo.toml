@@ -3,25 +3,69 @@ name = "health_haven_medical_centre"
 version = "0.1.0"
 edition = "2021"
 description = "A medical centre application built using Actix-web, providing health services and information."
-authors = ["Your Name <faroukpandor@gmail.com>"]
+authors = ["Farouk Pandor <faroukpandor@gmail.com>"]
 license = "MIT"
 rust-version = "1.60.0"
 categories = ["web-programming", "health", "actix"]
 keywords = ["actix", "web", "medical", "healthcare"]
+repository = "https://github.com/yourusername/health_haven_medical_centre"
+homepage = "https://yourdomain.com/health_haven_medical_centre"
+documentation = "https://docs.rs/health_haven_medical_centre"
+readme = "README.md"
+edition = "2021"
 
 [dependencies]
-actix-web = "4.0"   # Web framework for building web applications
+actix-web = "4.0"  # Web framework for building web applications
 serde = { version = "1.0", features = ["derive"] }  # For serialization
 serde_json = "1.0"  # For JSON handling
-sqlx = { version = "0.5", features = ["macros", "runtime-actix-native-tls"] }  # Enable Actix runtime with native TLS
+sqlx = { version = "0.5", features = ["macros", "runtime-actix-native-tls", "postgres"] }  # Actix runtime with native TLS and Postgres support
 syn = { version = "1.0", features = ["derive", "parsing"] }  # For parsing and code generation
-
-# Optional additional dependencies
 dotenv = "0.15"  # For loading environment variables from a .env file
 log = "0.4"  # For logging support
-tokio = { version = "1.0", features = ["full"] }  # If you need async features
+tokio = { version = "1.0", features = ["full"] }  # Async features
+uuid = { version = "1.0", features = ["v4"] }  # For generating unique IDs
+validator = "0.14"  # Validation library for request data
+chrono = { version = "0.4", features = ["serde"] }  # Date and time library with Serde support
+bcrypt = "0.10"  # For hashing passwords
 
-# Testing dependencies (uncomment if needed)
+# Optional additional dependencies
+actix-session = "0.5"  # For session management
+actix-files = "0.6"  # Static file serving
+actix-multipart = "0.4"  # Handling file uploads
+actix-cors = "0.6"  # For Cross-Origin Resource Sharing
+actix-identity = "0.3"  # Identity middleware for managing user authentication
+
+[dev-dependencies]
 actix-rt = "2.5"  # Actix runtime for async testing
 tokio-test = "0.4"  # Testing utilities for Tokio
 reqwest = { version = "0.11", features = ["json"] }  # HTTP client for making requests in tests
+mockito = "0.30"  # HTTP mocking library for testing
+
+[build-dependencies]
+prost-build = "0.10"  # Protobuf compiler for building gRPC services
+
+[features]
+default = ["web", "health", "actix"]
+web = ["actix-web", "serde", "serde_json"]
+database = ["sqlx", "dotenv"]
+auth = ["bcrypt", "validator"]
+testing = ["actix-rt", "tokio-test", "reqwest", "mockito"]
+
+[profile.dev]
+opt-level = 0
+debug = true
+overflow-checks = true
+lto = false
+
+[profile.release]
+opt-level = 3
+debug = false
+overflow-checks = true
+lto = "fat"
+
+[workspace]
+members = ["health_haven_medical_centre", "another_crate"]
+
+[package.metadata.docs.rs]
+all-features = true
+no-default-features = false
