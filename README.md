@@ -22,4 +22,4 @@ Welcome to the **Health Haven Medical Centre** repository! This project is a com
 To get started with the project, clone this repository:
 
 ```bash
-git clone https://github.com/yourusername/health-haven-medical-centre.git
+git clone https://github.com/faroukpandor/health-haven-medical-centre.git
