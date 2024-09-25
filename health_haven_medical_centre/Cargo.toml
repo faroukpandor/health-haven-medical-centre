@@ -3,69 +3,58 @@ name = "health_haven_medical_centre"
 version = "0.1.0"
 edition = "2021"
 description = "A medical centre application built using Actix-web, providing health services and information."
-authors = ["Farouk Pandor <faroukpandor@gmail.com>"]
+authors = ["Your Name <faroukpandor@gmail.com>"]
 license = "MIT"
 rust-version = "1.60.0"
 categories = ["web-programming", "health", "actix"]
 keywords = ["actix", "web", "medical", "healthcare"]
-repository = "https://github.com/yourusername/health_haven_medical_centre"
-homepage = "https://yourdomain.com/health_haven_medical_centre"
-documentation = "https://docs.rs/health_haven_medical_centre"
+repository = "https://github.com/YourUsername/health_haven_medical_centre"  # Update with your repository URL
+homepage = "https://yourwebsite.com"  # Update with your homepage URL
+documentation = "https://docs.yourwebsite.com"  # Update with your documentation URL
 readme = "README.md"
 edition = "2021"
 
 [dependencies]
-actix-web = "4.0"  # Web framework for building web applications
+actix-web = "4.0"   # Web framework for building web applications
 serde = { version = "1.0", features = ["derive"] }  # For serialization
 serde_json = "1.0"  # For JSON handling
-sqlx = { version = "0.5", features = ["macros", "runtime-actix-native-tls", "postgres"] }  # Actix runtime with native TLS and Postgres support
+sqlx = { version = "0.5", features = ["macros", "runtime-actix-native-tls"] }  # Enable Actix runtime with native TLS
 syn = { version = "1.0", features = ["derive", "parsing"] }  # For parsing and code generation
 dotenv = "0.15"  # For loading environment variables from a .env file
 log = "0.4"  # For logging support
-tokio = { version = "1.0", features = ["full"] }  # Async features
-uuid = { version = "1.0", features = ["v4"] }  # For generating unique IDs
-validator = "0.14"  # Validation library for request data
-chrono = { version = "0.4", features = ["serde"] }  # Date and time library with Serde support
-bcrypt = "0.10"  # For hashing passwords
+tokio = { version = "1.0", features = ["full"] }  # Async runtime
 
-# Optional additional dependencies
-actix-session = "0.5"  # For session management
-actix-files = "0.6"  # Static file serving
-actix-multipart = "0.4"  # Handling file uploads
-actix-cors = "0.6"  # For Cross-Origin Resource Sharing
-actix-identity = "0.3"  # Identity middleware for managing user authentication
+# Additional dependencies for security, performance, and utility
+openssl = { version = "0.10", features = ["vendored"] }  # For OpenSSL support
+bcrypt = "0.11"  # For password hashing
+chrono = "0.4"  # For date and time handling
+uuid = { version = "1.0", features = ["v4"] }  # For generating UUIDs
+validator = "0.14"  # For input validation
+actix-cors = "0.6"  # For enabling Cross-Origin Resource Sharing
+argon2 = "0.3"  # For password hashing using Argon2
+thiserror = "1.0"  # For error handling
+actix-files = "0.6"  # For serving static files
 
+# Optional: for handling file uploads
+actix-multipart = "0.4"
+
+# Testing dependencies
 [dev-dependencies]
 actix-rt = "2.5"  # Actix runtime for async testing
 tokio-test = "0.4"  # Testing utilities for Tokio
 reqwest = { version = "0.11", features = ["json"] }  # HTTP client for making requests in tests
-mockito = "0.30"  # HTTP mocking library for testing
-
-[build-dependencies]
-prost-build = "0.10"  # Protobuf compiler for building gRPC services
 
 [features]
-default = ["web", "health", "actix"]
-web = ["actix-web", "serde", "serde_json"]
-database = ["sqlx", "dotenv"]
-auth = ["bcrypt", "validator"]
-testing = ["actix-rt", "tokio-test", "reqwest", "mockito"]
-
-[profile.dev]
-opt-level = 0
-debug = true
-overflow-checks = true
-lto = false
+default = ["postgres"]
+sqlite = ["sqlx/sqlite"]
+mysql = ["sqlx/mysql"]
+postgres = ["sqlx/postgres"]
 
 [profile.release]
-opt-level = 3
-debug = false
-overflow-checks = true
-lto = "fat"
+opt-level = "z"  # Optimize for size
 
 [workspace]
-members = ["health_haven_medical_centre", "another_crate"]
+members = ["health_haven_backend", "health_haven_frontend"]  # Add if your project has a workspace with multiple members
 
-[package.metadata.docs.rs]
-all-features = true
-no-default-features = false
+# Optional: for Cargo.lock management in multi-package repositories
+[workspace.dependencies]
