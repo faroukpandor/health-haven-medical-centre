@@ -14,40 +14,86 @@ documentation = "https://healthhaven.github.io/docs"
 readme = "README.md"
 
 [dependencies]
-actix-web = "4.0"  # Web framework for building web applications
-serde = { version = "1.0", features = ["derive"] }  # For serialization
-serde_json = "1.0"  # For JSON handling
-sqlx = { version = "0.5.13", features = ["runtime-tokio-rustls", "postgres", "sqlite", "mysql"] }  # Database support
-syn = "1.0"  # For parsing Rust code (used in procedural macros)
-dotenv = "0.15"  # For loading environment variables from a .env file
-log = "0.4"  # For logging support
-tokio = { version = "1.0", features = ["full"] }  # Async runtime
-openssl = { version = "0.10", features = ["vendored"] }  # For OpenSSL support
-bcrypt = "0.11"  # For password hashing
-chrono = "0.4"  # For date and time handling
-uuid = { version = "1.0", features = ["v4"] }  # For generating UUIDs
-validator = "0.14"  # For input validation
-actix-cors = "0.6"  # For enabling Cross-Origin Resource Sharing
-argon2 = "0.3"  # For password hashing using Argon2
-thiserror = "1.0"  # For error handling
-actix-files = "0.6"  # For serving static files
-jsonwebtoken = "8.1"  # For JWT handling
-actix-multipart = "0.4"  # For handling file uploads
+# Web framework for building web applications
+actix-web = "4.0"
+
+# Serialization and deserialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# SQL database support
+sqlx = { version = "0.5.13", features = ["runtime-tokio-rustls", "postgres", "sqlite", "mysql"] }
+
+# Parsing Rust syntax (for procedural macros)
+syn = { version = "1.0", features = ["full"] }
+
+# Environment variable management
+dotenv = "0.15"
+
+# Logging support
+log = "0.4"
+
+# Asynchronous runtime
+tokio = { version = "1.0", features = ["full"] }
+
+# Security: SSL support
+openssl = { version = "0.10", features = ["vendored"] }
+
+# Password hashing
+bcrypt = "0.11"
+argon2 = "0.3"
+
+# Date and time handling
+chrono = "0.4"
+
+# UUID generation
+uuid = { version = "1.0", features = ["v4"] }
+
+# Input validation
+validator = "0.14"
+
+# Cross-Origin Resource Sharing (CORS)
+actix-cors = "0.6"
+
+# Error handling
+thiserror = "1.0"
+
+# Static file serving
+actix-files = "0.6"
+
+# JSON Web Token (JWT) handling
+jsonwebtoken = "8.1"
+
+# Optional: for handling file uploads
+actix-multipart = "0.4"
 
 # Testing dependencies
 [dev-dependencies]
-actix-rt = "2.5"  # Actix runtime for async testing
-tokio-test = "0.4"  # Testing utilities for Tokio
-reqwest = { version = "0.11", features = ["json"] }  # HTTP client for making requests in tests
+# Actix runtime for async testing
+actix-rt = "2.5"
+
+# Testing utilities for Tokio
+tokio-test = "0.4"
+
+# HTTP client for making requests in tests
+reqwest = { version = "0.11", features = ["json"] }
 
 [features]
+# Default features, including PostgreSQL support
 default = ["postgres"]
+
+# Optional database support for SQLite and MySQL
 sqlite = ["sqlx/sqlite"]
 mysql = ["sqlx/mysql"]
 postgres = ["sqlx/postgres"]
 
 [profile.release]
-opt-level = "z"  # Optimize for size
+# Optimize for size
+opt-level = "z"
+
+[build-dependencies]
+# Required for procedural macros or code generation
+syn = "1"
 
 [workspace]
 # Uncomment the following line if your project has a workspace with multiple members
