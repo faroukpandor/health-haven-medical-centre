@@ -67,6 +67,9 @@ jsonwebtoken = "8.1"
 # Optional: for handling file uploads
 actix-multipart = "0.4"
 
+# Optional: For handling authentication
+actix-identity = "0.4"
+
 # Testing dependencies
 [dev-dependencies]
 # Actix runtime for async testing
